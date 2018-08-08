@@ -29,7 +29,7 @@
 			padding: 1em;
 		}
 	</style>
-	<form method="GET" action="{{ ($download) ? route('bundle.download',['bundle' => $bundle_id]) : route('bundle.preview',['bundle' => $bundle_id]) }}">
+	<form method="POST" action="{{ ($download) ? route('bundle.download',['bundle' => $bundle_id]) : route('bundle.preview',['bundle' => $bundle_id]) }}">
 		<label class="form-label" for="">Please enter your access id</label>
 		<input autofocus class="form-control" type="password" name="access_id" placeholder="Access Id">
 
