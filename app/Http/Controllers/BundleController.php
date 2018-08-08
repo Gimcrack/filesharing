@@ -16,11 +16,17 @@ class BundleController extends Controller
 	// The bundle content preview
 	public function preview(Request $request, $bundle_id) {
 
+	    if ( ! $request->get('auth') )
+	        return view('authorize', ['bundle_id' => $bundle_id, 'download' => false]);
+
 		// Getting bundle metadata
 		abort_if(! $metadata = Upload::getMetadata($bundle_id), 404);
 
 		// Checking authorization code
 		abort_if($metadata['view-auth'] != $request->get('auth'), 401);
+
+		// Checking access id
+        abort_if( ! collect(config('app.access_ids'))->contains( $request->get('access_id') ), 403 );
 
 		// Checking bundle expiration
 		// TODO : make this editable
@@ -43,11 +49,17 @@ class BundleController extends Controller
 	// - or just one file
 	public function download(Request $request, $bundle_id, $file_id = null) {
 
+        if ( ! $request->get('auth') )
+            return view('authorize', ['bundle_id' => $bundle_id, 'download' => true]);
+
 		// Getting bundle metadata
 		abort_if(! $metadata = Upload::getMetadata($bundle_id), 404);
 
 		// Checking authorization code
 		abort_if($metadata['view-auth'] != $request->get('auth'), 401);
+
+        // Checking access id
+        abort_if( ! collect(config('app.access_ids'))->contains( $request->get('access_id') ), 403 );
 
 		// Checking bundle expiration
 		// TODO : make this editable

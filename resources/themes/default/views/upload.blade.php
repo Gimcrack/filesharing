@@ -3,6 +3,18 @@
 @section('page', 'upload')
 
 @section('content')
+    <style>
+        .form-control {
+            width: 82%;
+            padding: 6px;
+            background-color: #545454;
+            color: white;
+
+            font-size: 26px;
+            letter-spacing: 8px;
+        }
+
+    </style>
     <h1>@lang('app.upload-files-title')</h1>
 
     <div id="upload-column" class="wide">
@@ -25,9 +37,17 @@
         <p class="link"><a href="#" target="_blank" id="download-link"></a></p>
         <button class="clippy" data-clipboard-target="#download-link">&nbsp;</button>
 
-        <label>@lang('app.delete-link')</label>
-        <p class="link"><a href="#" id="delete-link"></a></p>
-        <button class="clippy" data-clipboard-target="#delete-link">&nbsp;</button>
+        {{--<label>@lang('app.delete-link')</label>--}}
+        {{--<p class="link"><a href="#" id="delete-link"></a></p>--}}
+        {{--<button class="clippy" data-clipboard-target="#delete-link">&nbsp;</button>--}}
+
+        <label>Authorization Code</label>
+        <input id="view-auth" type="password" class="form-control link" readonly>
+        <button class="clippy" data-clipboard-target="#view-auth">&nbsp;</button>
+
+        {{--<label>Delete Authorization</label>--}}
+        {{--<input id="delete-auth" type="text" class="form-control" readonly>--}}
+        {{--<button class="clippy" data-clipboard-target="#delete-auth">&nbsp;</button>--}}
     </div>
 
     <p class="spacer">&nbsp;</p>
@@ -96,6 +116,10 @@
                             $('#preview-link').attr('href', data.bundle_url).html(data.bundle_url);
                             $('#download-link').attr('href', data.download_url).html(data.download_url);
                             $('#delete-link').attr('href', data.delete_url).html(data.delete_url);
+
+                            $('#view-auth').val(data.view_auth);
+
+                            $('#delete-auth').val(data.delete_auth);
 
                             $('#upload-column').removeClass('wide');
                             $('#settings-column').show();

@@ -126,16 +126,18 @@ class UploadController extends Controller
 				'result'			=> true,
 				'bundle_url'		=> route('bundle.preview', [
 					'bundle' 		=> $request->header('X-Upload-Bundle'),
-					'auth' 			=> $metadata['view-auth']
+					'auth' 			=> null
 				]),
 				'delete_url'		=> route('bundle.delete', [
 					'bundle' 		=> $request->header('X-Upload-Bundle'),
-					'auth'			=> $metadata['delete-auth']
+					'auth'			=> null
 				]),
 				'download_url'		=> route('bundle.download', [
 					'bundle' 		=> $request->header('X-Upload-Bundle'),
-					'auth'			=> $metadata['view-auth']
-				])
+					'auth'			=> null
+				]),
+                'view_auth'         => $metadata['view-auth'],
+                'delete_auth'       => $metadata['delete-auth'],
 			]);
 		}
 		catch (Exception $e) {
