@@ -14,7 +14,7 @@ return [
 
     'access_ids' => [
         "9RGxNz7Ij5GWbN9c",  // Jeremy
-//        "eafvOwpu0urZWAoH",
+        "eafvOwpu0urZWAoH", // Jack
 //        "ohq8r98mX8hP7E3P",
 //        "LVkyhG8x54gpOhkh",
 //        "xjjHwthSYUHMIrcd",
