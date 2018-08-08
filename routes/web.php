@@ -54,6 +54,16 @@ Route::prefix('bundle')->group(function() {
         'as'        => 'bundle.download'
     ]);
 
+    Route::post('/{bundle}', [
+        'uses'      => 'BundleController@preview',
+        'as'        => 'bundle.preview'
+    ]);
+
+    Route::post('/{bundle}/download', [
+        'uses'      => 'BundleController@download',
+        'as'        => 'bundle.download'
+    ]);
+
     Route::get('/{bundle}/file/{file}/download', [
         'uses'      => 'BundleController@download',
         'as'        => 'file.download'
