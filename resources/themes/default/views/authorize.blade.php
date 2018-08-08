@@ -36,6 +36,6 @@
 		<label class="form-label" for="">Please enter your authorization code</label>
 		<input autofocus class="form-control" type="password" name="auth" placeholder="Authorization Code">
 
-		<button class="form-btn" type="submit">Go</button>
+		<button class="form-btn" type="submit">{{ ($download) ? "Download Files" : "Preview Files" }}</button>
 	</form>
 @endsection
