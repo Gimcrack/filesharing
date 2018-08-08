@@ -42,7 +42,7 @@
         {{--<button class="clippy" data-clipboard-target="#delete-link">&nbsp;</button>--}}
 
         <label>Authorization Code</label>
-        <input id="view-auth" type="password" class="form-control link" readonly>
+        <input id="view-auth" type="text" class="form-control link" readonly>
         <button class="clippy" data-clipboard-target="#view-auth">&nbsp;</button>
 
         {{--<label>Delete Authorization</label>--}}
