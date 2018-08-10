@@ -13,7 +13,7 @@
 		<ul id="files-list">
 			@foreach ($metadata['files'] as $f)
 				<li>
-					<a href="{{ route('file.download', ['bundle' => $bundle_id, 'file' => $f['filename'], 'auth' => $metadata['view-auth'] ]) }}">
+					<a href="{{ route('file.download', ['bundle' => $bundle_id, 'file' => $f['filename'], 'auth' => $metadata['view-auth'] ]) }}&access_id={{ request('access_id') }}">
 						{{ $f['original'] }}
 					</a>
 					<span class="filesize">({{ Upload::humanFilesize($f['filesize']) }})</span>
@@ -23,7 +23,7 @@
 
 		@if (count($metadata['files']) > 1)
 			<p class="download-all-btn">
-				<a href="{{ route('bundle.download', ['bundle' => $bundle_id, 'auth' => $metadata['view-auth'] ])}}">
+				<a href="{{ route('bundle.download', ['bundle' => $bundle_id, 'auth' => $metadata['view-auth'] ])}}&access_id={{ request('access_id') }}">
 					@lang('app.download-all')
 				</a>
 				<br />
@@ -33,7 +33,7 @@
 			</p>
 		@else
 			<p class="download-all-btn">
-				<a href="{{ route('file.download', ['bundle' => $bundle_id, 'file' => $f['filename'], 'auth' => $metadata['view-auth'] ])}}">
+				<a href="{{ route('file.download', ['bundle' => $bundle_id, 'file' => $f['filename'], 'auth' => $metadata['view-auth'] ])}}&access_id={{ request('access_id') }}">
 					@lang('app.download-all')
 				</a>
 				<br />
